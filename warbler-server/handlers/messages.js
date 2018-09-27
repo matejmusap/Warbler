@@ -18,3 +18,21 @@ exports.createMessage = async function(req, res, next) {
         return next(err);
     }
 };
+
+exports.getMessage = async function(req, res, next) {
+    try {
+        let message = await db.Message.find(req.params._id);
+        return res.status(200).json(message);
+    } catch (err) {
+        return next(err);
+    }
+}
+
+exports.deleteMessage = async function(req, res, next) {
+    try {
+        let foundMessage = await db.Message.findById(req.params._id);
+        await foundMessage.remove()
+    } catch (err) {
+        return next(err);
+    }
+};
