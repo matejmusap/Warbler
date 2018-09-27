@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 
 const {
-    cretaeMessage,
+    createMessage,
     getMessage,
     deleteMessage
 } = require("../handlers/messages");
 
-router.route("/").post(cretaeMessage);
+router.route("/").post(createMessage);
 
 router
     .route("/:message-id")
